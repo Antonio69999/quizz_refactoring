@@ -29,7 +29,7 @@ class QuestionRepository
         $questionList = [];
 
         foreach ($questions as $question) {
-            $questionList[] = new Question($question);
+            $questionList[] = new Question($question, $this->db);
         }
     
         return $questionList;

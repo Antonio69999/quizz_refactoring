@@ -2,23 +2,27 @@
 
 require_once('./utils/loadClass.php');
 
-class   answer
+class   Answer
 {
     private int $id_answers;
     private string $answer;
     private bool $is_correct;
     private int $id_qst;
 
+    public function __construct (array $data)
+    {
+        $this->id_answers = $data['id_answers'];
+        $this->answer = $data['answer'];
+        $this->is_correct = $data['is_correct'];
+        $this->id_qst = $data['id_qst'];
+    }
+
     public function getAnswer()
     {
         return $this->answer;
     }
 
-    /**
-     * Set the value of answer
-     *
-     * @return  self
-     */ 
+
     public function setAnswer($answer)
     {
         $this->answer = $answer;
@@ -26,9 +30,6 @@ class   answer
         return $this;
     }
 
-    /**
-     * Get the value of is_correct
-     */ 
     public function getIs_correct()
     {
         return $this->is_correct;
@@ -86,13 +87,7 @@ class   answer
         return $this;
     }
 
-    public function __construct (array $data)
-    {
-        $this->id_answers = $data['id_answers'];
-        $this->answer = $data['answer'];
-        $this->is_correct = $data['is_correct'];
-        $this->id_qst = $data['id_qst'];
-    }
+
 
     // public function createAnswer(array $data)
     // {
