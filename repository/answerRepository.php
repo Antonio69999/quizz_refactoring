@@ -9,27 +9,17 @@ class answerRepository
         $this->db = $db;
     }
 
-    // public function createAnswers(answer $answer)
-    // {
-    //     $request = $this->db->prepare('INSERT INTO answers (answers, is_correct, id_qst) VALUES (:answer, :is_correct, :id_qst)');
-    //     $request->execute([
-    //         'answer' => $answer->getAnswer(),
-    //         'is_correct' => $answer->getIs_Correct(),
-    //         'id_qst' => $answer->getId_Qst()
-    //     ]);
-    // }
-
     public function findAllAnswer(): array
     {
         $query = 'SELECT * FROM answers';
         $result = $this->db->query($query);
         $answers = $result->fetchAll();
-        $answer = [];
-
+        $answerList = [];
+    
         foreach ($answers as $answer) {
-                    $answer[] = new Answer($answer);
-                }
-        return $answer;
+            $answerList[] = new Answer($answer);
+        }
+        return $answerList;
     }
 
     public function getDb(): PDO
@@ -44,5 +34,6 @@ class answerRepository
         return $this;
     }
 
-
 }
+
+

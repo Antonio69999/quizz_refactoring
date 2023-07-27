@@ -5,47 +5,40 @@ require_once('./utils/loadClass.php');
 
 class   question
 {
-    private string $question;
-    private string $explaination;
-    private array $answers;
+    private string $id_qst;
+    private string $intitule;
 
-    
-    //Get the value of question//
-    public function getQuestion()
+
+    public function getId_qst()
     {
-        return $this->question;
+        return $this->id_qst;
     }
 
-    //Get the value of explaination//
-    public function getExplaination()
-    {
-        return $this->explaination;
-    }
 
-    public function setExplaination($explaination)
+    public function setId_qst($id_qst)
     {
-        $this->explaination = $explaination;
+        $this->id_qst = $id_qst;
 
         return $this;
     }
 
-    //Get the value of answers//
-    public function getAnswers()
+
+    public function getIntitule()
     {
-        return $this->answers;
+        return $this->intitule;
     }
 
 
-    public function __construct(string $question, string $explaination)
+    public function setIntitule($intitule)
     {
-        $this->question = $question;
-        // $this->explaination = $explaination;
+        $this->intitule = $intitule;
+
+        return $this;
     }
 
-    public function addAnswer(answer $answer)
+    public function __construct(array $data)
     {
-        $this->answers[] = $answer;
+        $this->id_qst = $data['id_qst'];
+        $this->intitule = $data['intitule'];   
     }
-
-
 }

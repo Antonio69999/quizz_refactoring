@@ -5,8 +5,21 @@ require_once('./utils/db_connect.php');
 // require_once('./class/qcm.php');
 
 $answerRepo = new AnswerRepository($bdd);
+$questionRepo = new QuestionRepository($bdd);
 
-var_dump($answerRepo->findAllAnswer());
+foreach ($questionRepo->findAllQuestions() as $question) {
+    echo $question->getIntitule();
+    foreach ($answer->getAnswer() as $answer) {
+        echo $answer->getAnswer();
+    }
+
+}
+
+// var_dump($answerRepo->findAllAnswer());
+// var_dump($questionRepo->findAllQuestions());
+
+
+
 
 
 // $qcm = new qcm();
