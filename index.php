@@ -1,27 +1,25 @@
 <?php
 
+require_once('./utils/dbConnect.php');
 require_once('./utils/loadClass.php');
-require_once('./utils/db_connect.php');
-// require_once('./class/qcm.php');
 
-$answerRepo = new AnswerRepository($bdd);
-$questionRepo = new QuestionRepository($bdd);
-$qcmRepo = new QcmRepository($bdd);
-// $qcm = $qcmRepo->FindAllQcm()[0];
-$qcm = $qcmRepo->FindAllQcm()[1];
+$qcmRepository = new QcmRepository($bdd);
+// $questionRepository = new QuestionRepository($bdd);
+// $answerRepository = new AnswersRepository($bdd);
 
-
-// var_dump($answerRepo->findAllAnswer());
-// var_dump($questionRepo->findAllQuestions());
-
-
-
-foreach ($questionRepo->findAllQuestions() as $question) {
-    echo $question->getIntitule(). '<br>';
-
-    $answers = $answerRepo->findAnswerById($question->getIdQst());
-    foreach ($answers as $answer) {
-        echo $answer->getAnswer(). '<br>';
+    $qcm1 = $qcmRepository->findAllQcms()[0];
+    // var_dump($qcm1);
+    $questions = $questionRepository->findQuestionsByIdQcm($qcm1->getIdQcm());
+    // var_dump($questions);
+    foreach ($questions as $question) {
+        echo "Question :" . $question->getIntitule() . "<br>";
+        $answers = $answerRepository->findAnswersByIdQuestion($question->getIdQst());
+        foreach ($answers as $answer) {
+         var_dump($answer);
+        }
     }
-    echo '<br>';
-} 
+    
+
+
+
+ ?>

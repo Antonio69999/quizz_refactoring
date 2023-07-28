@@ -6,7 +6,7 @@ function loadClass($classe)
     if (substr($classe, -strlen('Repository')) === 'Repository') {
         require_once 'repository/' . $classe . '.php';
     } else {
-        require_once 'class/' . $classe . '.php';
+        require_once 'entity/' . $classe . '.php';
     }
 }
 
